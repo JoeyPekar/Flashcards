@@ -15,6 +15,7 @@ public class StudyFrame extends DisplayCardFrame {
         
         controlContainer.setLayout(new GridLayout(1, 3));
         
+        // Add Components to the Control Container
         controlContainer.add(btnPrevious);
         controlContainer.add(btnFlip);
         controlContainer.add(btnNext);
@@ -32,12 +33,20 @@ public class StudyFrame extends DisplayCardFrame {
     @Override
     public void actionPerformed(ActionEvent e) {
         
+        // Flips the Card
         if (e.getSource().equals(btnFlip)) {
             
             this.cardPanel.flip();
             
         }
         
+        // Exit
+        
+    }
+
+    @Override
+    public void nextWord() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
