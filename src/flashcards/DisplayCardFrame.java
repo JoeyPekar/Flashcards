@@ -7,7 +7,15 @@ import java.awt.event.*;
 import java.nio.file.*;
 import java.io.*;
 
+import java.util.ArrayList;
+
 public abstract class DisplayCardFrame extends JFrame implements ActionListener {
+    
+    // Word Arrays
+    protected ArrayList<String> questions = new ArrayList<String>();
+    protected ArrayList<String> answers = new ArrayList<String>();
+    
+    protected int currentCard = 0;
     
     // Menu System
     private JMenuBar menuBar = new JMenuBar();
@@ -57,6 +65,13 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     private void loadWords() {
         
         this.cardPanel = new CardPanel("Hello", "World");
+        
+        questions.add("Dog");
+        questions.add("Cat");
+        questions.add("Cow");
+        answers.add("Woof");
+        answers.add("Meow");
+        answers.add("Moo");
         
         
         /* File Code
@@ -111,5 +126,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
         */
         
     }
+    
+    public abstract void nextWord();
     
 }
