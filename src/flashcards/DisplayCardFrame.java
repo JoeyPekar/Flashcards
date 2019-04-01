@@ -58,6 +58,8 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
         
         this.cardPanel = new CardPanel("Hello", "World");
         
+        
+        /* File Code
         Path inFiles = Paths.get("C:\\Java\\FlashCardsIn.txt");
         Path outFiles = Paths.get("C:\\Java\\FlashCardsOut.txt");
         
@@ -105,6 +107,8 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
         {
             System.out.println(e);
         }
+
+        */
         
     }
     
