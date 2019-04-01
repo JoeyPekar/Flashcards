@@ -26,7 +26,8 @@ public class StudyFrame extends DisplayCardFrame {
     
     public static void main(String[] args) {
         
-        StudyFrame frame = new StudyFrame();      
+        StudyFrame frame = new StudyFrame();   
+        //comment
         
     }
     
@@ -46,7 +47,9 @@ public class StudyFrame extends DisplayCardFrame {
 
     @Override
     public void nextWord() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        
     }
     
 }
