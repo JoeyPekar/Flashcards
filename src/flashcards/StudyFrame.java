@@ -21,6 +21,8 @@ public class StudyFrame extends DisplayCardFrame {
         controlContainer.add(btnNext);
         
         btnFlip.addActionListener(this);
+        btnNext.addActionListener(this);
+        btnPrevious.addActionListener(this);
         
     }
     
@@ -41,6 +43,18 @@ public class StudyFrame extends DisplayCardFrame {
             
         }
         
+        if (e.getSource().equals(btnNext)) {
+            
+            nextWord();
+            
+        }
+        
+        if (e.getSource().equals(btnPrevious)) {
+            
+            previousWord();
+            
+        }
+        
         // Exit
         
     }
@@ -48,7 +62,31 @@ public class StudyFrame extends DisplayCardFrame {
     @Override
     public void nextWord() {
         
+        if (this.currentCard + 1 < this.questions.size()) {
+            
+            this.cardPanel.updateCard(this.questions.get(currentCard + 1), this.answers.get(currentCard + 1));
+            currentCard += 1;
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "There are no more questions past this point.");
+            
+        }
         
+    }
+    
+    public void previousWord() {
+        
+        if (this.currentCard - 1 >= 0) {
+            
+            this.cardPanel.updateCard(this.questions.get(currentCard - 1), this.answers.get(currentCard - 1));
+            currentCard -= 1;
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "There are no more questions past this point.");
+            
+        }
         
     }
     

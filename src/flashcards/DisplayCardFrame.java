@@ -64,8 +64,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     
     private void loadWords() {
         
-        this.cardPanel = new CardPanel("Hello", "World");
-        
+        // Read from file soon
         questions.add("Dog");
         questions.add("Cat");
         questions.add("Cow");
@@ -73,6 +72,8 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
         answers.add("Meow");
         answers.add("Moo");
         
+        // Display first word
+        this.cardPanel.updateCard(questions.get(0), answers.get(0));
         
         /* File Code
         Path inFiles = Paths.get("C:\\Java\\FlashCardsIn.txt");

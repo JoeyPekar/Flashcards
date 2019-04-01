@@ -54,4 +54,14 @@ public class CardPanel extends JPanel {
         
     }
     
+    public void updateCard(String frontText, String backText) {
+        
+        // Variables
+        this.cardFront = frontText;
+        this.cardBack = backText;
+        
+        lblDisplay.setText(frontText);
+        
+    }
+    
 }
