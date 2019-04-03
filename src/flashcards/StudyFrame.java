@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 public class StudyFrame extends DisplayCardFrame {
 
+    // Button Controls
     JButton btnFlip = new JButton("Flip");
     
     JButton btnPrevious = new JButton("Previous");
@@ -20,6 +21,7 @@ public class StudyFrame extends DisplayCardFrame {
         controlContainer.add(btnFlip);
         controlContainer.add(btnNext);
         
+        // Add Action Listeners for Buttons
         btnFlip.addActionListener(this);
         btnNext.addActionListener(this);
         btnPrevious.addActionListener(this);
@@ -29,12 +31,14 @@ public class StudyFrame extends DisplayCardFrame {
     public static void main(String[] args) {
         
         StudyFrame frame = new StudyFrame();   
-        //comment
         
     }
     
+    // Action Listeners
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        super.actionPerformed(e);
         
         // Flips the Card
         if (e.getSource().equals(btnFlip)) {
@@ -55,10 +59,9 @@ public class StudyFrame extends DisplayCardFrame {
             
         }
         
-        // Exit
-        
     }
-
+    
+    // Next Word - btnNext - Goes to the next word.
     @Override
     public void nextWord() {
         
@@ -75,6 +78,7 @@ public class StudyFrame extends DisplayCardFrame {
         
     }
     
+    // Previous Word - btnPrevious - Goes back to the previous word.
     public void previousWord() {
         
         if (this.currentCard - 1 >= 0) {

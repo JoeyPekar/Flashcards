@@ -130,4 +130,15 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     
     public abstract void nextWord();
     
+    @Override
+    public void actionPerformed(ActionEvent e) {
+     
+        if (e.getSource().equals(menuFileExit)) {
+            
+            System.exit(0);
+            
+        }
+        
+    }
+    
 }
