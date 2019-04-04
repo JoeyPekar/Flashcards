@@ -12,6 +12,10 @@ public class StudyFrame extends DisplayCardFrame {
     JButton btnPrevious = new JButton("Previous");
     JButton btnNext = new JButton("Next");
     
+    // Menu Add Cards
+    JMenuItem menuFileAddCards = new JMenuItem("Add Cards");
+    JMenuItem menuFileUpdateCards = new JMenuItem("Update Cards");
+    
     public StudyFrame() {
         
         controlContainer.setLayout(new GridLayout(1, 3));
@@ -21,10 +25,17 @@ public class StudyFrame extends DisplayCardFrame {
         controlContainer.add(btnFlip);
         controlContainer.add(btnNext);
         
+        this.menuFile.addSeparator();
+        this.menuFile.add(menuFileAddCards);
+        this.menuFile.add(menuFileUpdateCards);
+        
         // Add Action Listeners for Buttons
         btnFlip.addActionListener(this);
         btnNext.addActionListener(this);
         btnPrevious.addActionListener(this);
+        
+        menuFileAddCards.addActionListener(this);
+        menuFileUpdateCards.addActionListener(this);
         
     }
     
@@ -56,6 +67,18 @@ public class StudyFrame extends DisplayCardFrame {
         if (e.getSource().equals(btnPrevious)) {
             
             previousWord();
+            
+        }
+        
+        if (e.getSource().equals(menuFileAddCards)) {
+            
+            AddFlashCard.addCards();
+            
+        }
+        
+        if (e.getSource().equals(menuFileUpdateCards)) {
+            
+            this.loadWords();
             
         }
         

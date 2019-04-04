@@ -20,7 +20,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     // Menu System
     private JMenuBar menuBar = new JMenuBar();
     
-    private JMenu menuFile = new JMenu("File");
+    protected JMenu menuFile = new JMenu("File");
     protected JMenu menuMode = new JMenu("Mode");
     
     private JMenuItem menuFileExit = new JMenuItem("Exit");
@@ -33,7 +33,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     public DisplayCardFrame() {
         
         // Design
-        this.setSize(1000, 400);  
+        this.setSize(1200, 600);  
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -62,7 +62,10 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
 
     }
     
-    private void loadWords()  {
+    protected void loadWords()  {
+        
+        questions.clear();
+        answers.clear();
         
         /* File Read */
         String file = "FlashCards.txt";
@@ -86,6 +89,8 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
             
             // Display first word
             this.cardPanel.updateCard(questions.get(0), answers.get(0));
+            
+            reader.close();
         
             
         } catch (FileNotFoundException e) {

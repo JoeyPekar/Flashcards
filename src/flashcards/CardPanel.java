@@ -30,7 +30,7 @@ public class CardPanel extends JPanel {
         
         this.add(lblDisplay, BorderLayout.CENTER);
         
-        lblDisplay.setText(cardFront);
+        lblDisplay.setText("<p>" + cardFront + "</p>");
         
         // Change background and styling
         setBackground(Color.WHITE);
