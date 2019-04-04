@@ -33,7 +33,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     public DisplayCardFrame() {
         
         // Design
-        this.setSize(600, 400);  
+        this.setSize(1000, 400);  
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -62,69 +62,41 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
 
     }
     
-    private void loadWords() {
+    private void loadWords()  {
         
-        // Read from file soon
-        questions.add("Dog");
-        questions.add("Cat");
-        questions.add("Cow");
-        answers.add("Woof");
-        answers.add("Meow");
-        answers.add("Moo");
+        /* File Read */
+        String file = "FlashCards.txt";
         
-        // Display first word
-        this.cardPanel.updateCard(questions.get(0), answers.get(0));
+        BufferedReader reader = null;
+        String input = "";
         
-        /* File Code
-        Path inFiles = Paths.get("C:\\Java\\FlashCardsIn.txt");
-        Path outFiles = Paths.get("C:\\Java\\FlashCardsOut.txt");
+        // Add Questions and Answers
+        try {
         
-        String[] questionArray = new String[10];
-        String[] answerArray = new String[10];
-        int questionCount = 0;
-        int answerCount = 0;
-        int count = 0;
-        String s; 
-        
-        try
-        {
-            InputStream input = Files.newInputStream(inFiles);
-            BufferedReader reader = new 
-                BufferedReader(new InputStreamReader(input));
-            OutputStream output = new
-                    BufferedOutputStream(Files.newOutputStream(outFiles));
-            BufferedWriter writer = new
-                    BufferedWriter(new OutputStreamWriter(output));
-            s = reader.readLine();
+            reader = new BufferedReader(new FileReader(file));
             
-            while(s != null)
-            {
-                if(count % 2 == 1)
-                {
-                    questionArray[questionCount] = s;
-                    writer.write(s, 0, s.length());
-                    writer.write(System.getProperty( "line.separator" ));
-                    s = reader.readLine();
-                    questionCount++;
-                }
-                else
-                {
-                    answerArray[answerCount] = s;
-                    writer.write(s + "\n", 0, s.length());
-                    writer.write(System.getProperty( "line.separator" ));
-                    s = reader.readLine();
-                    answerCount++;
-                }
-                count++;
+            while ((input = reader.readLine()) != null) {
+                
+                String[] in = input.split(",");
+                
+                questions.add(in[0]);
+                answers.add(in[1]);
+                
             }
-        writer.close();
-        }
-        catch(Exception e)
-        {
+            
+            // Display first word
+            this.cardPanel.updateCard(questions.get(0), answers.get(0));
+        
+            
+        } catch (FileNotFoundException e) {
+                
+            JOptionPane.showMessageDialog(this, "Missing file FlashCards.txt");
+                
+        } catch (IOException e) {
+            
             System.out.println(e);
+            
         }
-
-        */
         
     }
     

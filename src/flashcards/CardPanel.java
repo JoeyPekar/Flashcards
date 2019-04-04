@@ -23,7 +23,7 @@ public class CardPanel extends JPanel {
         this.cardFront = frontText;
         this.cardBack = backText;
         
-        Font cardFont = new Font("Consolas", Font.BOLD, 24);
+        Font cardFont = new Font("Consolas", Font.BOLD, 16);
         
         // Card Design     
         this.setLayout(new BorderLayout());

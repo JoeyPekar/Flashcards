@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.event.*;
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -57,7 +58,18 @@ public class AddFlashCard extends JFrame implements ActionListener{
         
         try
         {
-        Path outFiles = Paths.get("C:\\Java\\FlashCardsOut.txt");
+            
+            File file = new File("FlashCards.txt");
+  
+            //Create the file
+            if (file.createNewFile())
+            {
+                System.out.println("File is created!");
+            } else {
+                System.out.println("File already exists.");
+            }
+            
+        Path outFiles = Paths.get("FlashCards.txt");
         OutputStream output = new
                     BufferedOutputStream(Files.newOutputStream(outFiles));
             BufferedWriter writer = new
@@ -69,7 +81,7 @@ public class AddFlashCard extends JFrame implements ActionListener{
                 if(s != null)
                 {
                 writer.write(s, 0, s.length());
-                writer.write(System.getProperty( "line.separator" ));
+                writer.write(",");
                 }
                 s = ans[c];
                 if(s != null)

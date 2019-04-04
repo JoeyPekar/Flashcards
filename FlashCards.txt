@@ -1,0 +1,8 @@
+﻿A new version or edition of a software product is referred to as a software ___________.,Upgrade
+A ___________ app is designed for a handheld device., mobile
+In a spreadsheet worksheet a(n) ___________ works behind the scenes to tell the microprocessor how to use the contents of cells in calculations.,formula
+Which type of software must include the source code which allows programmers to modify and improve the software?,open source
+An operating system’s  ____________ capability supports a division of labor among all the processing units.,multiprocessing
+Which category of software would programming languages fall into?,Development
+Software for PCs contains a _________ program that guides you through the installation process.,setup
+The main directory on a storage device is referred to as the ________ directory.,root
