@@ -3,6 +3,8 @@ package flashcards;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class StudyFrame extends DisplayCardFrame {
 
@@ -13,8 +15,10 @@ public class StudyFrame extends DisplayCardFrame {
     JButton btnNext = new JButton("Next");
     
     // Menu Add Cards
-    JMenuItem menuFileAddCards = new JMenuItem("Add Cards");
-    JMenuItem menuFileUpdateCards = new JMenuItem("Update Cards");
+    JMenuItem menuCardsAddCards = new JMenuItem("Add Cards");
+    JMenuItem menuCardsUpdateCards = new JMenuItem("Update Cards");
+    
+    JMenuItem menuCardsShuffle = new JMenuItem("Shuffle Cards");
     
     public StudyFrame() {
         
@@ -25,17 +29,19 @@ public class StudyFrame extends DisplayCardFrame {
         controlContainer.add(btnFlip);
         controlContainer.add(btnNext);
         
-        this.menuFile.addSeparator();
-        this.menuFile.add(menuFileAddCards);
-        this.menuFile.add(menuFileUpdateCards);
+        this.menuCards.add(menuCardsAddCards);
+        this.menuCards.add(menuCardsUpdateCards);
+        this.menuCards.addSeparator();
+        this.menuCards.add(menuCardsShuffle);
         
         // Add Action Listeners for Buttons
         btnFlip.addActionListener(this);
         btnNext.addActionListener(this);
         btnPrevious.addActionListener(this);
         
-        menuFileAddCards.addActionListener(this);
-        menuFileUpdateCards.addActionListener(this);
+        menuCardsAddCards.addActionListener(this);
+        menuCardsUpdateCards.addActionListener(this);
+        menuCardsShuffle.addActionListener(this);
         
     }
     
@@ -70,15 +76,21 @@ public class StudyFrame extends DisplayCardFrame {
             
         }
         
-        if (e.getSource().equals(menuFileAddCards)) {
+        if (e.getSource().equals(menuCardsAddCards)) {
             
             AddFlashCard.addCards();
             
         }
         
-        if (e.getSource().equals(menuFileUpdateCards)) {
+        if (e.getSource().equals(menuCardsUpdateCards)) {
             
             this.loadWords();
+            
+        }
+        
+        if (e.getSource().equals(menuCardsShuffle)) {
+            
+            this.shuffle();
             
         }
         
@@ -86,7 +98,7 @@ public class StudyFrame extends DisplayCardFrame {
     
     // Next Word - btnNext - Goes to the next word.
     @Override
-    public void nextWord() {
+    protected void nextWord() {
         
         if (this.currentCard + 1 < this.questions.size()) {
             
@@ -102,7 +114,7 @@ public class StudyFrame extends DisplayCardFrame {
     }
     
     // Previous Word - btnPrevious - Goes back to the previous word.
-    public void previousWord() {
+    private void previousWord() {
         
         if (this.currentCard - 1 >= 0) {
             
@@ -114,6 +126,41 @@ public class StudyFrame extends DisplayCardFrame {
             JOptionPane.showMessageDialog(this, "There are no more questions past this point.");
             
         }
+        
+    }
+    
+    /* Shuffles the cards so they are in a new order */
+    private void shuffle() {
+        
+        // Save Cards to a combined array.
+        ArrayList<String> cards = new ArrayList<String>();
+        
+        for (int i = 0; i < questions.size(); i++) {
+            
+            cards.add(questions.get(i) + "," + answers.get(i));
+            
+        }
+        
+        // Shuffle Cards
+        Collections.shuffle(cards);
+        
+        // Clear Card Arrays
+        questions.clear();
+        answers.clear();
+        
+        // Repopulate Arrays
+        for (String newCard : cards) {
+
+            
+            questions.add(newCard.split(",")[0]);
+            answers.add(newCard.split(",")[1]);
+            
+        }
+        
+        // Update Card Panel with new starting word.
+        this.cardPanel.updateCard(questions.get(0), answers.get(0));
+        
+        
         
     }
     

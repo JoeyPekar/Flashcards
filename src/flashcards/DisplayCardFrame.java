@@ -20,7 +20,8 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     // Menu System
     private JMenuBar menuBar = new JMenuBar();
     
-    protected JMenu menuFile = new JMenu("File");
+    private JMenu menuFile = new JMenu("File");
+    protected JMenu menuCards = new JMenu("Cards");
     protected JMenu menuMode = new JMenu("Mode");
     
     private JMenuItem menuFileExit = new JMenuItem("Exit");
@@ -48,11 +49,13 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
         
     }
     
+    // Initialize Menus
     private void initMenu() {
         
         this.setJMenuBar(menuBar);
         
         menuBar.add(menuFile);
+        menuBar.add(menuCards);
         menuBar.add(menuMode);
         
         // Add Exit to File Menu 
@@ -62,6 +65,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
 
     }
     
+    // Load Words into the Program
     protected void loadWords()  {
         
         questions.clear();
@@ -105,7 +109,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
         
     }
     
-    public abstract void nextWord();
+    protected abstract void nextWord();
     
     @Override
     public void actionPerformed(ActionEvent e) {
