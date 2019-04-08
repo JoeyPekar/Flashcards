@@ -1,3 +1,9 @@
+/*
+ * StudyFrame.java
+ * Developed by Joey Pekar on 4/4/2019
+ * Contains the "Study Mode' portion of the program.
+*/
+
 package flashcards;
 
 import javax.swing.*;
@@ -19,6 +25,8 @@ public class StudyFrame extends DisplayCardFrame {
     JMenuItem menuCardsUpdateCards = new JMenuItem("Update Cards");
     
     JMenuItem menuCardsShuffle = new JMenuItem("Shuffle Cards");
+    
+    JMenuItem menuModeGame = new JMenuItem("Game");
     
     public StudyFrame() {
         
@@ -42,6 +50,10 @@ public class StudyFrame extends DisplayCardFrame {
         menuCardsAddCards.addActionListener(this);
         menuCardsUpdateCards.addActionListener(this);
         menuCardsShuffle.addActionListener(this);
+        
+        menuMode.add(menuModeGame);
+        
+        menuModeGame.addActionListener(this);
         
     }
     
@@ -91,6 +103,13 @@ public class StudyFrame extends DisplayCardFrame {
         if (e.getSource().equals(menuCardsShuffle)) {
             
             this.shuffle();
+            
+        }
+        
+        if (e.getSource().equals(menuModeGame)) {
+            
+            GameFrame frame = new GameFrame();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             
         }
         
@@ -159,6 +178,7 @@ public class StudyFrame extends DisplayCardFrame {
         
         // Update Card Panel with new starting word.
         this.cardPanel.updateCard(questions.get(0), answers.get(0));
+        JOptionPane.showMessageDialog(this, "Flashcards have been shuffled!");
         
         
         

@@ -64,4 +64,16 @@ public class CardPanel extends JPanel {
         
     }
     
+    public String getFrontText() {
+        
+        return this.cardFront;
+        
+    }
+    
+    public String getBackText() {
+        
+        return this.cardBack;
+        
+    }
+    
 }
