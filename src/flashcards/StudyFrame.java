@@ -178,9 +178,7 @@ public class StudyFrame extends DisplayCardFrame {
         
         // Update Card Panel with new starting word.
         this.cardPanel.updateCard(questions.get(0), answers.get(0));
-        JOptionPane.showMessageDialog(this, "Flashcards have been shuffled!");
-        
-        
+        JOptionPane.showMessageDialog(this, "Flashcards have been shuffled!"); 
         
     }
     

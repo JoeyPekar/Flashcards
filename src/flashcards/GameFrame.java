@@ -16,15 +16,23 @@ public class GameFrame extends DisplayCardFrame {
     private JTextField txtUserAnswer = new JTextField(10);
     private JButton btnCheck = new JButton("Check");
     private JButton btnSkip = new JButton("Skip");
-    private JButton btnNext = new JButton("Next");
-    
+
     private int correct = 0;
+    private int wrong = 0;
     private int total = this.questions.size();
     
+    private JMenuItem menuFeedback = new JMenuItem("     ");
+    private JMenuItem menuCorrect = new JMenuItem("0 Correct");
+    private JMenuItem menuWrong = new JMenuItem("0 Wrong");
+    
     public GameFrame() {
-        
-        this.setJMenuBar(null);
-        
+           
+        // Set up Game Menu
+        this.menuBar.removeAll();
+        this.menuBar.add(this.menuFeedback);
+        this.menuBar.add(this.menuCorrect);
+        this.menuBar.add(this.menuWrong);
+          
         controlContainer.setLayout(new GridLayout(2, 1));
         
         controlContainer.add(new JPanel(new GridLayout(1, 3)) {
@@ -69,9 +77,19 @@ public class GameFrame extends DisplayCardFrame {
         if (e.getSource().equals(btnCheck)) {
             
             
-            if (txtUserAnswer.getText().equals(this.cardPanel.getBackText())) {
+            if (txtUserAnswer.getText().equalsIgnoreCase(this.cardPanel.getBackText())) {
                 
                 correct++;
+                this.menuFeedback.setBackground(new Color(15, 155, 10));
+
+                this.menuCorrect.setText(correct + " correct.");
+                
+            } else {
+                
+                wrong++;
+                this.menuFeedback.setBackground(new Color(206, 40, 20));
+                
+                this.menuWrong.setText(wrong + " wrong.");
                 
             }
             
@@ -82,12 +100,14 @@ public class GameFrame extends DisplayCardFrame {
         
         if (e.getSource().equals(btnSkip)) {
             
+            this.menuFeedback.setBackground(Color.WHITE);
+
+            
             nextWord();
             
         }
         
     }
-
     @Override
     protected void nextWord() {
         

@@ -18,7 +18,7 @@ public abstract class DisplayCardFrame extends JFrame implements ActionListener 
     protected int currentCard = 0;
     
     // Menu System
-    private JMenuBar menuBar = new JMenuBar();
+    protected JMenuBar menuBar = new JMenuBar();
     
     private JMenu menuFile = new JMenu("File");
     protected JMenu menuCards = new JMenu("Cards");
